@@ -3,8 +3,6 @@ from matplotlib.animation import FuncAnimation
 from numpy import sqrt
 from random import randint
 
-  GNU nano 3.2                       ReadMe.txt                                 
-
 #Here's what happens:
 #	1. Start in the middle of the triangle.
 #	2. Measure half the distance to a randomly chosen corner.
