@@ -1,9 +1,6 @@
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
-from numpy import sqrt
-from random import randint
-
-  GNU nano 3.2                       ReadMe.txt                                 
+from random import randint                               
 
 #Here's what happens:
 #	1. Start in the middle of the triangle.
@@ -21,6 +18,10 @@ yc = [0,0,0.5]
 res = [] # list of lists, each one a point [x,y]
     
 if __name__ == "__main__":
+    
+    def animate(k):
+        ax.scatter(x[k],y[k],1,"r","+")
+    
     # Initial conditions
     x = 0.25
     y = 0.25
@@ -28,25 +29,25 @@ if __name__ == "__main__":
     except: i = 50000
     try: a = str(input("Would you like it animated? (Y/N) "))
     except: a = "N"
+    if (a.strip() != "Y") and (a.strip() != "N"): a = "N"
+    else: pass
+    
     # Add point to list. Select random corner. Cut the distance in half. Repeat. 
-    for k in range(i):
+    for p in range(i):
         res.append([x,y])
         n = randint(0,2)
         x = (x+xc[n])/2
         y = (y+yc[n])/2
-    # Separate out list of lists "res" into x and y lists
-    x,y = [i[] for i in res]
-    y = [j[1] for j in res]
     
-    def animate(k): ax.scatter(x[k],y[k],1,"r","+")
+    # Separate out list of lists "res" into x and y lists
+    x = [i[0] for i in res]
+    y = [j[1] for j in res]
     
     # Set up the plot
     fig,ax = plt.subplots(figsize=(10,10))
     ax.set_xlim(min(x),max(x))
     ax.set_ylim(min(y),max(y))
-    
-    if "Y" in a: ani = FuncAnimation(fig, animate, frames=len(x))
-    elif "N" in a: ax.scatter(x,y,1,"r","+")
+    if a == "Y": ani = FuncAnimation(fig, animate, frames=len(x))
+    elif a == "N": ax.scatter(x,y,1,"r","+")
     else: print("Whatever, man.")
-    
     plt.show()
