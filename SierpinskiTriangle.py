@@ -1,6 +1,11 @@
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+<<<<<<< HEAD
 from random import randint                               
+=======
+from numpy import sqrt
+from random import randint
+>>>>>>> 79b93162120531fb69ace82afd5df1f18cbe7092
 
 #Here's what happens:
 #	1. Start in the middle of the triangle.
